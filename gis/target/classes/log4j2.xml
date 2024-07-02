@@ -7,7 +7,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="java.sql" level="INFO" additivity="false">
+        <Logger name="java.sql" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
         <Logger name="egovframework" level="DEBUG" additivity="false">
@@ -17,7 +17,7 @@
             <AppenderRef ref="console" />
         </Logger>
           <!-- log SQL with timing information, post execution -->
-        <Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+        <Logger name="jdbc.sqltiming" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
         <Logger name="org.springframework" level="INFO" additivity="false">
