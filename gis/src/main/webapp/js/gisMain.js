@@ -22,10 +22,4 @@ document.addEventListener('DOMContentLoaded', function(){
 			zoom : 8
 		})
 	});
-	const newDiv = document.createElement('div');
-	newDiv.style.position="absolute";
-	newDiv.style.width="100px";
-	newDiv.style.height="300px";
-	newDiv.style.backgroundColor="red";
-	document.body.appendChild(newDiv);
 });
