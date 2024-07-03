@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function(){
 			})
 		],
 		
+		controls: ol.control.defaults().extend([
+        	new ol.control.ZoomSlider()
+    	]),
+    	keyboardEventTarget: document,
+
+
 		view : new ol.View({
 			center : new ol.proj.fromLonLat([126.969652,37.553836]),
 			zoom : 8
