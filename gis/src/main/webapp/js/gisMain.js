@@ -6,6 +6,9 @@ WEB-INF 폴더의 경우에는 브라우저에서 직접적으로 접근이 불�
 => Controller를 통해야만 접근이 가능하며, 사용자가 직접 접근이 불가하여 보안성이 높다.
 */
 var map = null;
+var draw = null;
+var source = null;
+var vector = null;
 
 document.addEventListener('DOMContentLoaded', function(){
 	
@@ -52,6 +55,17 @@ document.addEventListener('DOMContentLoaded', function(){
 			zoom : 8
 		})
 	});
+	
+	//그리기 객체
+	source = new ol.source.Vector({
+		wrapX : false
+	});
+	vector = new ol.layer.Vector({
+		title : 'vector',
+		source : source
+	});
+	
+	map.addLayer(vector);
 });
 
 function layerOnOff(checkElement) {
@@ -59,4 +73,18 @@ function layerOnOff(checkElement) {
 	const layerArray = map.getLayers().getArray();
 	const checkYN = checkElement.checked;
 	layerArray[num].setVisible(checkYN);
+}
+
+function drawClick(drawType) {
+	map.removeInteraction(draw);
+	addInteraction(drawType);
+}
+
+function addInteraction(drawType) {
+	draw = new ol.interaction.Draw({
+		source : source,
+		type : drawType
+	});
+	map.addInteraction(draw);
+	
 }

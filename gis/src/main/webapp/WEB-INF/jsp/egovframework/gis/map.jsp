@@ -109,17 +109,29 @@
 	}
 	#drawingUl {
 		list-style : none;
-		padding-top : 3px; 
 		padding-left : 0;
 		margin : 0 0 0 0; 
 	}
 	.drawingLi {
 		float: left;
 		width : 40px;
+		padding-top : 3px; 
 		text-align : center;
 		font-size : 9pt;
 		color : white;
 		border-right : 1px solid #FFFFFF;
+	}
+	.drawingLi:hover {
+		cursor : pointer;
+  		transition: 0.3s;
+  		background-color: #4B33D4;
+  		font-size : 10pt;
+		font-weight : bold;
+	
+	}
+	.drawingLiImg {
+		width:16px;
+		height:16px;
 	}
 	#hideDrawBtn {
 		float: left;
@@ -171,14 +183,14 @@
 		<div id="drawingBar">
 			<div id="drawingList">
 			<ul id="drawingUl">
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/pointIcon.png" style="width:16px;height:16px;"></image><br>점</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/lineIcon.png" style="width:16px;height:16px;"></image><br>선</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/polygonIcon.png" style="width:16px;height:16px;"></image><br>면</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/boxIcon.png" style="width:16px;height:16px;"></image><br>상자</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/squareIcon.png" style="width:16px;height:16px;"></image><br>정각형</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/textIcon.png" style="width:16px;height:16px;"></image><br>글자</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/eraseIcon.png" style="width:16px;height:16px;"></image><br>지우기</a></li>
-				<li class="drawingLi"><a><image src="/images/egovframework/gis/infoIcon.png" style="width:16px;height:16px;"></image><br>정보</a></li>
+				<li class="drawingLi"><a class="selectDrawType" onclick="drawClick('Point')"><image class="drawingLiImg" src="/images/egovframework/gis/pointIcon.png"></image><br>점</a></li>
+				<li class="drawingLi"><a class="selectDrawType" onclick="drawClick('LineString')"><image class="drawingLiImg" src="/images/egovframework/gis/lineIcon.png"></image><br>선</a></li>
+				<li class="drawingLi"><a class="selectDrawType" onclick="drawClick('Polygon')"><image class="drawingLiImg" src="/images/egovframework/gis/polygonIcon.png"></image><br>면</a></li>
+				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/boxIcon.png"></image><br>상자</a></li>
+				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/squareIcon.png"></image><br>정각형</a></li>
+				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/textIcon.png"></image><br>글자</a></li>
+				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/eraseIcon.png"></image><br>지우기</a></li>
+				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/infoIcon.png"></image><br>정보</a></li>
 			</ul>
 			</div>
 			<div id="hideDrawBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
