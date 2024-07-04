@@ -12,8 +12,33 @@ document.addEventListener('DOMContentLoaded', function(){
 	map = new ol.Map({
 		target:'map',
 		layers : [
+			/*세계지도*/
 			new ol.layer.Tile({
 				source : new ol.source.OSM()
+			}),
+			/*시군구*/
+			new ol.layer.Tile({
+				source : new ol.source.TileWMS({
+					url : 'http://192.168.0.2:8080/geoserver/cite/wms',
+					params : {
+						'SRS' : 'EPSG:5186',
+						'LAYERS' : 'cite:al_d002_11_20240121'
+					},
+					serverType : 'geoserver'
+				}),
+				visible : false
+			}),
+			/*대학교*/
+			new ol.layer.Tile({
+				source : new ol.source.TileWMS({
+					url : 'http://192.168.0.2:8080/geoserver/cite/wms',
+					params : {
+						'SRS' : 'EPSG:5186',
+						'LAYERS' : 'cite:xsdb_uv_poi_tm'
+					},
+					serverType : 'geoserver'
+				}),
+				visible : false
 			})
 		],
 		
@@ -22,10 +47,16 @@ document.addEventListener('DOMContentLoaded', function(){
     	]),
     	keyboardEventTarget: document,
 
-
 		view : new ol.View({
 			center : new ol.proj.fromLonLat([126.969652,37.553836]),
 			zoom : 8
 		})
 	});
 });
+
+function layerOnOff(checkElement) {
+	let num = Number(checkElement.getAttribute("id").substring(8));
+	const layerArray = map.getLayers().getArray();
+	const checkYN = checkElement.checked;
+	layerArray[num].setVisible(checkYN);
+}
