@@ -80,6 +80,10 @@ function drawClick(drawType) {
 	addInteraction(drawType);
 }
 
+function drawErase() {
+	
+	
+}
 function addInteraction(drawType) {
 	draw = new ol.interaction.Draw({
 		source : source,

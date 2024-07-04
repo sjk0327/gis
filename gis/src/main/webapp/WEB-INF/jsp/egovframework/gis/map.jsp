@@ -189,7 +189,7 @@
 				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/boxIcon.png"></image><br>상자</a></li>
 				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/squareIcon.png"></image><br>정각형</a></li>
 				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/textIcon.png"></image><br>글자</a></li>
-				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/eraseIcon.png"></image><br>지우기</a></li>
+				<li class="drawingLi"><a class="selectDrawType" onclick="drawErase()"><image class="drawingLiImg" src="/images/egovframework/gis/eraseIcon.png"></image><br>지우기</a></li>
 				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/infoIcon.png"></image><br>정보</a></li>
 			</ul>
 			</div>
