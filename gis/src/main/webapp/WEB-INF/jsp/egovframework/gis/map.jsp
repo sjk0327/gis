@@ -88,11 +88,48 @@
 		margin : 0 0 0 0; 
 		padding-top : 10px; 
 		padding-left : 10px;
+		list-style: none;
 	}
-	li {
+	.layerLi {
         list-style: none; /* 목록 마커(아이콘) 숨기기 */
         padding-left: 0; /* 목록의 왼쪽 여백 제거 */
     }
+    #drawingBar {
+		position : absolute;
+		background-color:#808080; 
+		left : 18px;
+		top:590px; 
+		width:366px;
+		height:40px; 
+		z-index:9999;
+	}
+	#drawingList {
+		float: left;
+		width : 326px;
+	}
+	#drawingUl {
+		list-style : none;
+		padding-top : 3px; 
+		padding-left : 0;
+		margin : 0 0 0 0; 
+	}
+	.drawingLi {
+		float: left;
+		width : 40px;
+		text-align : center;
+		font-size : 9pt;
+		color : white;
+		border-right : 1px solid #FFFFFF;
+	}
+	#hideDrawBtn {
+		float: left;
+		width : 40px;
+		background-color : #000A66;
+		text-align : center;
+		padding-top : 3px; 
+		padding-bottom : 3px; 
+		z-index:9999;
+	}
 </style>
 
 <title>map</title>
@@ -116,12 +153,12 @@
 				<ul id="layerList">
 				    <li> 레이어
 				        <ul>
-				            <li><label for="checkbox1">
+				            <li class="layerLi"><label for="checkbox1">
 						        <input type="checkbox" id="checkbox1" name="checkbox1" value="value1" onchange="layerOnOff(this)">
 						        시군구
 						    	</label>
 				    		</li>
-				            <li><label for="checkbox2">
+				            <li class="layerLi"><label for="checkbox2">
 						        <input type="checkbox" id="checkbox2" name="checkbox2" value="value2" onchange="layerOnOff(this)">
 						        대학교
 						    	</label>
@@ -130,6 +167,21 @@
 				    </li>
 				</ul>
 			</div>	
+		</div>
+		<div id="drawingBar">
+			<div id="drawingList">
+			<ul id="drawingUl">
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/pointIcon.png" style="width:16px;height:16px;"></image><br>점</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/lineIcon.png" style="width:16px;height:16px;"></image><br>선</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/polygonIcon.png" style="width:16px;height:16px;"></image><br>면</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/boxIcon.png" style="width:16px;height:16px;"></image><br>상자</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/squareIcon.png" style="width:16px;height:16px;"></image><br>정각형</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/textIcon.png" style="width:16px;height:16px;"></image><br>글자</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/eraseIcon.png" style="width:16px;height:16px;"></image><br>지우기</a></li>
+				<li class="drawingLi"><a><image src="/images/egovframework/gis/infoIcon.png" style="width:16px;height:16px;"></image><br>정보</a></li>
+			</ul>
+			</div>
+			<div id="hideDrawBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
 		</div>
 		<div id="map" style="z-index:0;">
 				
