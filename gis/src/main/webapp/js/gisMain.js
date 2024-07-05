@@ -111,10 +111,18 @@ function drawInit() {
 	}
 }
 function addInteraction(drawType) {
-	draw = new ol.interaction.Draw({
-		source : source,
-		type : drawType
-	});
+	if(drawType == 'Box' || drawType == 'Square') {
+		draw = new ol.interaction.Draw({
+			source : source,
+			type : 'Circle',
+			geometryFunction : drawType == 'Box'?ol.interaction.Draw.createBox():ol.interaction.Draw.createRegularPolygon(5)
+		});	
+	}else {
+		draw = new ol.interaction.Draw({
+			source : source,
+			type : drawType
+		});		
+	}
 	map.addInteraction(draw);
 	
 }
