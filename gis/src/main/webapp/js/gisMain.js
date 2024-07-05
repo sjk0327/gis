@@ -103,9 +103,12 @@ function drawClick(drawType) {
 	addInteraction(drawType);
 }
 
-function drawErase() {
-	
-	
+function drawInit() {
+	map.removeInteraction(draw);
+	var features = source.getFeatures();
+	for(var i=0;i<features.length;i++) {
+		source.removeFeature(features[i]);
+	}
 }
 function addInteraction(drawType) {
 	draw = new ol.interaction.Draw({
