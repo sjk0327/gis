@@ -68,6 +68,29 @@ document.addEventListener('DOMContentLoaded', function(){
 	map.addLayer(vector);
 });
 
+document.getElementById("searchHideBtn").addEventListener("click", (e) => {
+    document.getElementById("serchBarHiddenText").classList.toggle("menu-on");
+    document.getElementById("serchBar").classList.toggle("menu-on");
+    document.getElementById("searchDetail").classList.toggle("menu-on");
+    document.getElementById("searchKeyword").classList.toggle("menu-on");
+    document.getElementById("searchBtn").classList.toggle("menu-on");
+    document.getElementById("searchHideBtn").classList.toggle("menu-on");
+});
+document.getElementById("layerHideBtn").addEventListener("click", (e) => {
+    document.getElementById("layerBarBody").classList.toggle("menu-on");
+    document.getElementById("layerBarTop").classList.toggle("menu-on");
+    document.getElementById("layerHideBtn").classList.toggle("menu-on");
+
+});
+document.getElementById("drawingHideBtn").addEventListener("click", (e) => {
+	document.getElementById("drawingBarHiddenText").classList.toggle("menu-on");
+    document.getElementById("drawingBar").classList.toggle("menu-on");
+    document.getElementById("drawingList").classList.toggle("menu-on");
+    document.getElementById("drawingHideBtn").classList.toggle("menu-on");
+
+});
+
+
 function layerOnOff(checkElement) {
 	let num = Number(checkElement.getAttribute("id").substring(8));
 	const layerArray = map.getLayers().getArray();
@@ -92,3 +115,5 @@ function addInteraction(drawType) {
 	map.addInteraction(draw);
 	
 }
+
+

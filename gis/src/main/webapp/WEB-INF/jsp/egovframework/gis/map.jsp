@@ -15,19 +15,40 @@
 	    left: unset;
 	    right: 8px;
 	}
+	#serchBarHiddenText {
+		position : absolute;
+		left : 18px;
+		top : 30px;
+		padding-top : 10px;
+		padding-left : 6px;
+		z-index:10000; 
+		color : white;
+		display : none;
+	}
+	#serchBarHiddenText.menu-on {
+		display : inline-block;
+	}
+	
 	#serchBar {
 		position : absolute;
 		left : 18px;
 		top : 30px;
 		background-color:#8E69FF; 
-		width:250px;
+		width:210px;
 		height:40px; 
 		z-index:9999; 
 		margin:0 0 0 0; 
 		padding-top : 0px;
 		display : flex;
+		transform: scale(1,1);
+ 		transition: transform 300ms;
+	}
+	#serchBar.menu-on {
+		transform: scale(0.3,1) translateX(-242px);;
+  		transition: transform 300ms;
 		
 	}
+	
 	#searchDetail {
 		width : 10%;
 		height : 40px;
@@ -36,6 +57,14 @@
 		padding-top : 6px;
 		padding-left : 6px;
 	}
+	#searchDetail:hover {
+		cursor : pointer;
+	}
+	
+	#searchDetail.menu-on {
+		display : none;
+	}
+	
 	#searchKeyword {
 		width : 60%;
 		height : 40px;
@@ -43,6 +72,10 @@
 		box-sizing: border-box;
 		flex : 1;
 	}
+	#searchKeyword.menu-on {
+		display : none;
+	}
+	
 	#searchBtn {
 		width : 15%;
 		height : 40px;
@@ -51,12 +84,28 @@
 		padding-top : 6px;
 		padding-left : 6px;
 	}
-	.hideBtn {
-		width : 15%;
+	#searchBtn:hover {
+		cursor : pointer;
+	}
+	#searchBtn.menu-on {
+		display : none;
+	}
+	
+	#searchHideBtn {
+		position : absolute;
+		left : 228px;
+		top : 30px;
+		width : 40px;
+		height:40px; 
 		background-color : #000A66;
 		text-align : center;
-		padding-top : 3px;
+		z-index:9999; 
+  		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
+	}
+	#searchHideBtn.menu-on {
+		transform: translateX(-146px) rotate(0.5turn);
+  		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 	#layerBar {
 		position : absolute;
@@ -68,21 +117,53 @@
 	}
 	#layerBarTop {
 		background-color:#8E69FF; 
-		width:250px;
+		width:210px;
 		height:40px;
-		display : flex;
+		float : left;
+ 		transition: transform 300ms;
+ 		display : inline-block;
 	}
+	#layerBarTop.menu-on {
+		transform: scale(0.3,1) translateX(-242px);
+  		transition: transform 300ms;
+	}
+	
+	#layerHideBtn {
+		float : left;
+		left : 228px;
+		top : 90px;
+		width : 40px;
+		height:40px; 
+		background-color : #000A66;
+		text-align : center;
+		display : inline-block;
+  		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	#layerHideBtn.menu-on {
+		transform: translateX(-146px) rotate(0.5turn);
+  		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
 	#layerBarBody {
 		background-color:#C0C0C0; 
 		width:250px;
 		height:360px;
+		display : block;
+ 		transition: transform 300ms;
 	}
-	#layerHeadText {
-		width:85%;
-		flex : 1;
+	#layerBarBody.menu-on {
+		transform: scale(0,0);
+  		transition: transform 300ms;
+	}
+	
+	#layerBarHeadText {
+		position : absolute;
+		left : 18px;
+		top : 90px;
 		padding-top : 10px;
 		padding-left : 6px;
 		color : white;
+		z-index:10000; 
 	}
 	#layerList {
 		margin : 0 0 0 0; 
@@ -94,19 +175,43 @@
         list-style: none; /* 목록 마커(아이콘) 숨기기 */
         padding-left: 0; /* 목록의 왼쪽 여백 제거 */
     }
+    
+    #drawingBarHiddenText {
+		position : absolute;
+		left : 18px;
+		top : 590px;
+		padding-top : 10px;
+		padding-left : 6px;
+		z-index:10000; 
+		color : white;
+		display : none;
+	}
+	#drawingBarHiddenText.menu-on {
+		display : inline-block;
+	}
     #drawingBar {
 		position : absolute;
 		background-color:#808080; 
 		left : 18px;
 		top:590px; 
-		width:366px;
+		width:326px;
 		height:40px; 
 		z-index:9999;
+		transition: transform 300ms;
 	}
+	#drawingBar.menu-on {
+		transform: scale(0.2,1) translateX(-647px);;
+  		transition: transform 300ms;
+	}
+	
 	#drawingList {
 		float: left;
 		width : 326px;
 	}
+	#drawingList.menu-on {
+		display : none;
+	}
+	
 	#drawingUl {
 		list-style : none;
 		padding-left : 0;
@@ -133,14 +238,28 @@
 		width:16px;
 		height:16px;
 	}
-	#hideDrawBtn {
-		float: left;
+	#drawingHideBtn {
+		position : absolute;
+		left : 342px;
+		top : 590px;
 		width : 40px;
+		z-index:9999;
 		background-color : #000A66;
 		text-align : center;
 		padding-top : 3px; 
 		padding-bottom : 3px; 
-		z-index:9999;
+		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	#drawingHideBtn.menu-on {
+		transform: translateX(-258px) rotate(0.5turn);
+  		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.hideBtn:hover {
+		cursor : pointer;
+	}
+	.layerLi label:hover, input:hover {
+		cursor : pointer;
 	}
 </style>
 
@@ -148,19 +267,18 @@
 </head>
 <body>
 		
-		
+		<div id="serchBarHiddenText">검색</div>
 		<div id="serchBar">
 			<div id="searchDetail"><a><image src="/images/egovframework/gis/navigationBtn.png" style="width:30px;height:30px;"></image></a></div>
 			<div id="searchKeyword"><input type="text" style="width:120px;"></div>
 			<div id="searchBtn"><a><image src="/images/egovframework/gis/searchBtn.png" style="width:30px;height:30px;"></image></a></div>
-			<div class="hideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
 		</div>
+		<div class="hideBtn" id="searchHideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px; margin-top : 3px;"></image></a></div>
 		
+		<div id="layerBarHeadText">레이어</div>
 		<div id="layerBar">
-			<div id="layerBarTop">
-				<div id="layerHeadText">레이어</div>
-				<div class="hideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
-			</div>
+			<div id="layerBarTop"></div>
+			<div class="hideBtn" id="layerHideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px; margin-top : 3px;"></image></a></div>
 			<div id="layerBarBody">
 				<ul id="layerList">
 				    <li> 레이어
@@ -180,6 +298,7 @@
 				</ul>
 			</div>	
 		</div>
+		<div id="drawingBarHiddenText">편집</div>
 		<div id="drawingBar">
 			<div id="drawingList">
 			<ul id="drawingUl">
@@ -193,8 +312,8 @@
 				<li class="drawingLi"><a class="selectDrawType"><image class="drawingLiImg" src="/images/egovframework/gis/infoIcon.png"></image><br>정보</a></li>
 			</ul>
 			</div>
-			<div id="hideDrawBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
 		</div>
+		<div class="hideBtn" id="drawingHideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
 		<div id="map" style="z-index:0;">
 				
 		</div>
