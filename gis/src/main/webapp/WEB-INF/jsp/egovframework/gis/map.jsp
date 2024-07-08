@@ -200,7 +200,7 @@
 		transition: transform 300ms;
 	}
 	#drawingBar.menu-on {
-		transform: scale(0.2,1) translateX(-807px);;
+		transform: scale(0.2,1) translateX(-820px);;
   		transition: transform 300ms;
 	}
 	
@@ -269,7 +269,7 @@
 		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 	#drawingHideBtn.menu-on {
-		transform: translateX(-321px) rotate(0.5turn);
+		transform: translateX(-328px) rotate(0.5turn);
   		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 	
