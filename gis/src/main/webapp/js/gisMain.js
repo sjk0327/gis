@@ -98,18 +98,29 @@ function layerOnOff(checkElement) {
 	layerArray[num].setVisible(checkYN);
 }
 
-function drawClick(drawType) {
-	map.removeInteraction(draw);
+function drawClick(drawElement, drawType) {
+
+  Array.prototype.slice.call(document.querySelectorAll('#drawingUl li')).forEach(function(element){
+    element.classList.remove('selected');
+  });
+  map.removeInteraction(draw);
+  
+  if(drawType == 'Init') {drawInit(); return;}
+  else {
+	drawElement.classList.add('selected'); 
 	addInteraction(drawType);
+  }
 }
 
 function drawInit() {
-	map.removeInteraction(draw);
+
 	var features = source.getFeatures();
 	for(var i=0;i<features.length;i++) {
 		source.removeFeature(features[i]);
 	}
+	document.getElementById("textMarker").value="";
 }
+
 function addInteraction(drawType) {
 	if(drawType == 'Box' || drawType == 'Square') {
 		draw = new ol.interaction.Draw({
@@ -117,14 +128,26 @@ function addInteraction(drawType) {
 			type : 'Circle',
 			geometryFunction : drawType == 'Box'?ol.interaction.Draw.createBox():ol.interaction.Draw.createRegularPolygon(5)
 		});	
+	}else if(drawType == 'Text'){
+		document.getElementById("textMarker").focus();
+		draw = new ol.interaction.Draw({
+			source : source,
+			type : 'Point'
+		});
+		
+		draw.on('drawend', function(event) {
+		  var textStyle = new ol.style.Style({
+			text : new ol.style.Text({text :document.getElementById("textMarker").value})
+			})	
+		  event.feature.setStyle(textStyle);
+		});
+		
 	}else {
 		draw = new ol.interaction.Draw({
 			source : source,
 			type : drawType
-		});		
+		});	
 	}
 	map.addInteraction(draw);
-	
 }
-
 
