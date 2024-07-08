@@ -325,7 +325,7 @@
 				<li class="drawingLi" onclick="drawClick(this,'Polygon')"><image class="drawingLiImg" src="/images/egovframework/gis/polygonIcon.png"></image><br>면</li>
 				<li class="drawingLi" onclick="drawClick(this,'Box')"><image class="drawingLiImg" src="/images/egovframework/gis/boxIcon.png"></image><br>상자</li>
 				<li class="drawingLi" onclick="drawClick(this,'Square')"><image class="drawingLiImg" src="/images/egovframework/gis/squareIcon.png"></image><br>정각형</li>
-				<li id="drawingLiText" onclick="drawClick(this,'Text')"><image class="drawingLiImg" src="/images/egovframework/gis/textIcon.png"></image><br>글자<input id="textMarker"></li>
+				<li id="drawingLiText" onclick="drawClick(this,'Text')"><image class="drawingLiImg" style="margin-left:5px;"src="/images/egovframework/gis/textIcon.png"></image><br>글자<input id="textMarker"></li>
 				<li class="drawingLi" onclick="drawClick(this,'Init')"><image class="drawingLiImg" src="/images/egovframework/gis/eraseIcon.png"></image><br>지우기</li>
 				<li class="drawingLi"><image class="drawingLiImg" src="/images/egovframework/gis/infoIcon.png"></image><br>정보</li>
 			</ul>
