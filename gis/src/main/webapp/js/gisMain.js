@@ -151,3 +151,90 @@ function addInteraction(drawType) {
 	map.addInteraction(draw);
 }
 
+var sketch; //라인스트링 이벤트 시 geometry객체를 담을 변수
+var measureTooltipElement;//draw 이벤트가 진행 중일 때 담을 거리 값 element
+var measureTooltip; //툴팁 위치
+
+function measureLength() {
+	draw = new ol.interaction.Draw({
+        source: source,
+        type: 'LineString',
+        style: new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(255, 255, 255, 0.2)',
+            }),
+            stroke: new ol.style.Stroke({
+                color: 'rgba(0, 0, 0, 0.5)',
+                lineDash: [10, 10],
+                width: 2,
+            }),
+            image: new ol.style.Circle({
+                radius: 5
+            }),
+        }),
+    })
+    map.addInteraction(draw);
+    createMeasureTooltip();
+	
+    var listener;
+    draw.on('drawstart', function(evt) {
+        console.log(evt)
+        sketch = evt.feature;
+
+		 let tooltipCoord = evt.coordinate;
+        listener = sketch.getGeometry().on('change', function(evt) {
+            const geom = evt.target;
+            let output = formatLength(geom);
+            tooltipCoord = geom.getLastCoordinate();
+
+            measureTooltipElement.innerHTML = output;
+            measureTooltip.setPosition(tooltipCoord);
+        })
+    })
+
+    draw.on('drawend', function() {
+        measureTooltipElement.className = 'ol-tooptip ol-tooltip-static';
+        measureTooltip.setOffset([0, -7]);
+
+        //unset sketch
+        sketch = null;
+        measureTooltipElement = null;
+        createMeasureTooltip();
+        new ol.Observable(listener)
+    })
+	
+}
+
+function createMeasureTooltip() {
+    if (measureTooltipElement) {
+        measureTooltipElement.parentNode.removeChild(measureTooltipElement);
+    }
+    measureTooltipElement = document.createElement('div');
+    measureTooltipElement.className = 'ol-tooltip ol-tooltip-measure';
+    measureTooltip = new ol.Overlay({
+        element: measureTooltipElement,
+        offset: [0, -15],
+        positioning: 'bottom-center',
+    });
+    map.addOverlay(measureTooltip);
+}
+
+function formatLength(line) {
+    /*openlayers 버전3에서는 sphere.getLength가 없음..측정값이 비슷할지는 확인해봐야할듯*/
+	var sphere = new ol.Sphere(6378137);
+	var lineCoordinates= line.getCoordinates();
+	var proj = map.getView().getProjection();
+	var start = ol.proj.transform(lineCoordinates[0], proj, 'EPSG:4326');
+	var end = ol.proj.transform(lineCoordinates[1], proj, 'EPSG:4326');
+
+    var length = sphere.haversineDistance(start,end);
+				
+    var output;
+    if (length > 100) {
+        output = Math.round((length / 1000) * 100) / 100 + ' ' + 'km';
+    } else {
+        output = Math.round(length * 100) / 100 + ' ' + 'm';
+    }
+
+    return output;
+};

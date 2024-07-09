@@ -179,7 +179,7 @@
     #drawingBarHiddenText {
 		position : absolute;
 		left : 18px;
-		top : 590px;
+		bottom:10px; 
 		padding-top : 10px;
 		padding-left : 6px;
 		z-index:10000; 
@@ -193,7 +193,7 @@
 		position : absolute;
 		background-color:#808080; 
 		left : 18px;
-		top:590px; 
+		bottom:10px; 
 		width:413px;
 		height:40px; 
 		z-index:9999;
@@ -259,7 +259,7 @@
 	#drawingHideBtn {
 		position : absolute;
 		left : 430px;
-		top : 590px;
+		bottom:10px; 
 		width : 40px;
 		z-index:9999;
 		background-color : #000A66;
@@ -278,6 +278,21 @@
 	}
 	.layerLi label:hover, input:hover {
 		cursor : pointer;
+	}
+	#measureBar {
+		position : absolute;
+		right : 16px;
+		top : 300px;
+		width : 30px;
+		height : 120px;
+		z-index:9999;
+		background-color : white;
+		opacity : 0.6;
+		padding-top : 7px;	
+	}
+
+	#measureLength {
+		text-align : center;
 	}
 </style>
 
@@ -332,9 +347,12 @@
 			</div>
 		</div>
 		<div class="hideBtn" id="drawingHideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
-		<div id="map" style="z-index:0;">
-				
+		<div id="map" style="z-index:0;"></div>
+		<div id="measureBar">
+			<div id="measureLength" onclick="measureLength();"><image src="/images/egovframework/gis/length.png" style="width:20px;height:20px;"></image></div>
 		</div>
+		
+		
 <script src="js/gisMain.js"></script>
 </body>
 </html>
