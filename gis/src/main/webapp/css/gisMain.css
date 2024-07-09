@@ -1,0 +1,288 @@
+@charset "UTF-8";
+.ol-zoom {
+    left: unset;
+    right: 8px;
+}
+.ol-zoomslider {
+    left: unset;
+    right: 8px;
+}
+#serchBarHiddenText {
+	position : absolute;
+	left : 18px;
+	top : 30px;
+	padding-top : 10px;
+	padding-left : 6px;
+	z-index:10000; 
+	color : white;
+	display : none;
+}
+#serchBarHiddenText.menu-on {
+	display : inline-block;
+}
+
+#serchBar {
+	position : absolute;
+	left : 18px;
+	top : 30px;
+	background-color:#8E69FF; 
+	width:210px;
+	height:40px; 
+	z-index:9999; 
+	margin:0 0 0 0; 
+	padding-top : 0px;
+	display : flex;
+	transform: scale(1,1);
+		transition: transform 300ms;
+}
+#serchBar.menu-on {
+	transform: scale(0.3,1) translateX(-242px);;
+ 		transition: transform 300ms;
+	
+}
+
+#searchDetail {
+	width : 10%;
+	height : 40px;
+	box-sizing: border-box;
+	flex : 1;
+	padding-top : 6px;
+	padding-left : 6px;
+}
+#searchDetail:hover {
+	cursor : pointer;
+}
+
+#searchDetail.menu-on {
+	display : none;
+}
+
+#searchKeyword {
+	width : 60%;
+	height : 40px;
+	padding-top : 7px;
+	box-sizing: border-box;
+	flex : 1;
+}
+#searchKeyword.menu-on {
+	display : none;
+}
+
+#searchBtn {
+	width : 15%;
+	height : 40px;
+	box-sizing: border-box;
+	flex : 1;
+	padding-top : 6px;
+	padding-left : 6px;
+}
+#searchBtn:hover {
+	cursor : pointer;
+}
+#searchBtn.menu-on {
+	display : none;
+}
+
+#searchHideBtn {
+	position : absolute;
+	left : 228px;
+	top : 30px;
+	width : 40px;
+	height:40px; 
+	background-color : #000A66;
+	text-align : center;
+	z-index:9999; 
+ 		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+#searchHideBtn.menu-on {
+	transform: translateX(-146px) rotate(0.5turn);
+ 		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#layerBar {
+	position : absolute;
+	left : 18px;
+	top:90px; 
+	width:250px;
+	height:400px; 
+	z-index:9999;		
+}
+#layerBarTop {
+	background-color:#8E69FF; 
+	width:210px;
+	height:40px;
+	float : left;
+		transition: transform 300ms;
+		display : inline-block;
+}
+#layerBarTop.menu-on {
+	transform: scale(0.3,1) translateX(-242px);
+ 		transition: transform 300ms;
+}
+
+#layerHideBtn {
+	float : left;
+	left : 228px;
+	top : 90px;
+	width : 40px;
+	height:40px; 
+	background-color : #000A66;
+	text-align : center;
+	display : inline-block;
+ 		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#layerHideBtn.menu-on {
+	transform: translateX(-146px) rotate(0.5turn);
+ 		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#layerBarBody {
+	background-color:#C0C0C0; 
+	width:250px;
+	height:360px;
+	display : block;
+		transition: transform 300ms;
+}
+#layerBarBody.menu-on {
+	transform: scale(0,0);
+ 		transition: transform 300ms;
+}
+
+#layerBarHeadText {
+	position : absolute;
+	left : 18px;
+	top : 90px;
+	padding-top : 10px;
+	padding-left : 6px;
+	color : white;
+	z-index:10000; 
+}
+#layerList {
+	margin : 0 0 0 0; 
+	padding-top : 10px; 
+	padding-left : 10px;
+	list-style: none;
+}
+.layerLi {
+       list-style: none; /* 목록 마커(아이콘) 숨기기 */
+       padding-left: 0; /* 목록의 왼쪽 여백 제거 */
+   }
+   
+   #drawingBarHiddenText {
+	position : absolute;
+	left : 18px;
+	bottom: 18px; 
+	padding-top : 10px;
+	padding-left : 6px;
+	z-index:10000; 
+	color : white;
+	display : none;
+}
+#drawingBarHiddenText.menu-on {
+	display : inline-block;
+}
+   #drawingBar {
+	position : absolute;
+	background-color:#808080; 
+	left : 18px;
+	bottom:10px; 
+	width:413px;
+	height:40px; 
+	z-index:9999;
+	transition: transform 300ms;
+}
+#drawingBar.menu-on {
+	transform: scale(0.2,1) translateX(-820px);;
+ 		transition: transform 300ms;
+}
+
+#drawingList {
+	float: left;
+	width : 413px;
+}
+#drawingList.menu-on {
+	display : none;
+}
+
+#drawingUl {
+	list-style : none;
+	padding-left : 0;
+	margin : 0 0 0 0; 
+}
+.drawingLi{
+	float: left;
+	width : 40px;
+	padding-top : 3px; 
+	text-align : center;
+	font-size : 9pt;
+	color : white;
+	border-right : 1px solid #FFFFFF;
+}
+.drawingLi:hover, #drawingLiText:hover, .drawingLi.selected, #drawingLiText.selected {
+	cursor : pointer;
+ 		transition: 0.3s;
+ 		background-color: #4B33D4;
+ 		font-size : 10pt;
+	font-weight : bold;
+}
+#drawingLiText {
+	float: left;
+	width : 120px;
+	padding-top : 3px; 
+	padding-left : 7px;	
+	font-size : 9pt;
+	color : white;
+	border-right : 1px solid #FFFFFF;
+}
+.drawingLiImg {
+	width:16px;
+	height:16px;
+}
+#selectDrawTypeText {
+	float : left;
+	padding-left : 7px;		
+}
+#textMarker {
+	width:70px; 
+	float : right;
+	margin-top : -12px;
+	margin-right : 7px;
+}
+#drawingHideBtn {
+	position : absolute;
+	left : 430px;
+	bottom:10px; 
+	width : 40px;
+	z-index:9999;
+	background-color : #000A66;
+	text-align : center;
+	padding-top : 3px; 
+	padding-bottom : 3px; 
+	transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+#drawingHideBtn.menu-on {
+	transform: translateX(-328px) rotate(0.5turn);
+ 		transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hideBtn:hover {
+	cursor : pointer;
+}
+.layerLi label:hover, input:hover {
+	cursor : pointer;
+}
+#measureBar {
+	position : absolute;
+	right : 16px;
+	top : 300px;
+	width : 30px;
+	height : 120px;
+	z-index:9999;
+	background-color : white;
+	opacity : 0.6;
+	padding-top : 7px;	
+}
+
+#measureLength {
+	text-align : center;
+}
