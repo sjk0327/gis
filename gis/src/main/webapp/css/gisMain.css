@@ -276,19 +276,35 @@
 	right : 16px;
 	top : 300px;
 	width : 30px;
-	height : 120px;
+	height : 100px;
 	z-index:9999;
 	background-color : white;
 	opacity : 0.6;
-	padding-top : 7px;	
+	padding-top : 7px;
+	border-style: solid;
+	border-radius: 5px;	
+	border-width : 1px;
+	border-color : #C0C0C0;
 }
 
 #measureLength {
+	height : 35px; 
 	text-align : center;
+}
+#measureLength:hover {
+	cursor : pointer;
 }
 #measureArea {
+	height : 35px;
 	text-align : center;
 }
+#measureArea:hover {
+	cursor : pointer;
+}
 #measureInit {
+	height : 35px;
 	text-align : center;
+}
+#measureInit:hover {
+	cursor : pointer;
 }
