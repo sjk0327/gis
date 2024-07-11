@@ -155,10 +155,11 @@ var sketch; //라인스트링 이벤트 시 geometry객체를 담을 변수
 var measureTooltipElement;//draw 이벤트가 진행 중일 때 담을 거리 값 element
 var measureTooltip; //툴팁 위치
 
-function measureLength() {
+function measure(type) {
+	map.removeInteraction(draw);
 	draw = new ol.interaction.Draw({
         source: source,
-        type: 'LineString',
+        type: type == 'Area'?'Polygon':'LineString',
         style: new ol.style.Style({
             fill: new ol.style.Fill({
                 color: 'rgba(255, 255, 255, 0.2)',
@@ -181,14 +182,19 @@ function measureLength() {
         console.log(evt)
         sketch = evt.feature;
 
-		 let tooltipCoord = evt.coordinate;
+		let tooltipCoord = evt.coordinate;
         listener = sketch.getGeometry().on('change', function(evt) {
             const geom = evt.target;
-            let output = formatLength(geom);
-            tooltipCoord = geom.getLastCoordinate();
-
+            let output;
+            if (geom.getType()=='Polygon') {
+	        	output = formatArea(geom);
+	        	tooltipCoord = geom.getInteriorPoint().getCoordinates();
+	      	} else if (geom.getType()=='LineString') {
+            	output = formatLength(geom);
+            	tooltipCoord = geom.getLastCoordinate();
+            }
             measureTooltipElement.innerHTML = output;
-            measureTooltip.setPosition(tooltipCoord);
+           	measureTooltip.setPosition(tooltipCoord);
         })
     })
 
@@ -237,4 +243,23 @@ function formatLength(line) {
     }
 
     return output;
+};
+
+function formatArea(polygon) {
+	var sphere = new ol.Sphere(6378137);
+	var proj = map.getView().getProjection();
+	var polygonClone = (polygon.clone().transform(proj, 'EPSG:4326'));
+	var polygonCoordinates= polygonClone.getLinearRing(0).getCoordinates();
+	var area = Math.abs(sphere.geodesicArea(polygonCoordinates));
+	
+	let output;
+	if(isNaN(area) == true) {
+		output = 0 + ' ' + 'm<sup>2</sup>';
+	} else if (area > 10000) {
+		output = Math.round((area / 1000000) * 100) / 100 + ' ' + 'km<sup>2</sup>';
+	} else {
+		output = Math.round(area * 100) / 100 + ' ' + 'm<sup>2</sup>';
+	}
+	return output;
+
 };
