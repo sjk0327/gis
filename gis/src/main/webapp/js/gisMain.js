@@ -274,3 +274,12 @@ function formatArea(polygon) {
 	return output;
 
 };
+
+function measureInit() {
+
+	var features = measureSource.getFeatures();
+	for(var i=0;i<features.length;i++) {
+		measureSource.removeFeature(features[i]);
+	}
+	map.getOverlays().clear();
+}
