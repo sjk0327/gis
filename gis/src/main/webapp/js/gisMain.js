@@ -8,7 +8,9 @@ WEB-INF 폴더의 경우에는 브라우저에서 직접적으로 접근이 불�
 var map = null;
 var draw = null;
 var source = null;
+var measureSource = null;
 var vector = null;
+var measureVector = null;
 
 document.addEventListener('DOMContentLoaded', function(){
 	
@@ -60,12 +62,21 @@ document.addEventListener('DOMContentLoaded', function(){
 	source = new ol.source.Vector({
 		wrapX : false
 	});
+	//측정 그리기 객체
+	measureSource = new ol.source.Vector({
+		wrapX : false
+	});
 	vector = new ol.layer.Vector({
 		title : 'vector',
 		source : source
 	});
+	measureVector = new ol.layer.Vector({
+		title : 'vector',
+		source : measureSource
+	});
 	
 	map.addLayer(vector);
+	map.addLayer(measureVector);
 });
 
 document.getElementById("searchHideBtn").addEventListener("click", (e) => {
@@ -158,7 +169,7 @@ var measureTooltip; //툴팁 위치
 function measure(type) {
 	map.removeInteraction(draw);
 	draw = new ol.interaction.Draw({
-        source: source,
+        source: measureSource,
         type: type == 'Area'?'Polygon':'LineString',
         style: new ol.style.Style({
             fill: new ol.style.Fill({
