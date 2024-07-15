@@ -166,8 +166,22 @@ var sketch; //라인스트링 이벤트 시 geometry객체를 담을 변수
 var measureTooltipElement;//draw 이벤트가 진행 중일 때 담을 거리 값 element
 var measureTooltip; //툴팁 위치
 
-function measure(type) {
+function measureClick(measureElement,type){
 	map.removeInteraction(draw);
+	Array.prototype.slice.call(document.querySelectorAll('#measureBar div')).forEach(function(element){
+    element.classList.remove('selected');
+	  });
+  	map.removeInteraction(draw);
+  
+  	if(type == 'Init') {measureInit(); return;}
+  	else {
+		measureElement.classList.add('selected'); 
+		measure(type);
+  	}
+}
+
+function measure(type) {
+	
 	draw = new ol.interaction.Draw({
         source: measureSource,
         type: type == 'Area'?'Polygon':'LineString',

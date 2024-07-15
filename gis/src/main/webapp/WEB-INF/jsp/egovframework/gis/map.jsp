@@ -61,9 +61,9 @@
 		<div class="hideBtn" id="drawingHideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
 		<div id="map" style="z-index:0;"></div>
 		<div id="measureBar">
-			<div id="measureLength" onclick="measure('Length');"><image src="/images/egovframework/gis/length.png" style="width:21px;height:21px;"></image></div>
-			<div id="measureArea" onclick="measure('Area');"><image src="/images/egovframework/gis/area.png" style="width:20px;height:20px;"></image></div>
-			<div id="measureInit" onclick="measureInit();"><image src="/images/egovframework/gis/init.png" style="width:22px;height:22px;"></image></div>
+			<div id="measureLength" onclick="measureClick(this,'Length');"><image src="/images/egovframework/gis/length.png" style="width:21px;height:21px;"></image></div>
+			<div id="measureArea" onclick="measureClick(this,'Area');"><image src="/images/egovframework/gis/area.png" style="width:20px;height:20px;"></image></div>
+			<div id="measureInit" onclick="measureClick(this,'Init');"><image src="/images/egovframework/gis/init.png" style="width:22px;height:22px;"></image></div>
 		</div>
 		
 <script src="js/gisMain.js"></script>
