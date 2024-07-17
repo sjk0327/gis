@@ -5,7 +5,10 @@
 <head>
 <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
 <script src="https://openlayers.org/en/v3.20.1/build/ol.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="css/gisMain.css" type="text/css">
 
 <title>map</title>
@@ -59,13 +62,13 @@
 			</div>
 		</div>
 		<div class="hideBtn" id="drawingHideBtn"><a><image src="/images/egovframework/gis/backBtn.png" style="width:30px;height:30px;"></image></a></div>
-		<div id="map" style="z-index:0;"></div>
 		<div id="measureBar">
 			<div id="measureLength" onclick="measureClick(this,'Length');"><image src="/images/egovframework/gis/length.png" style="width:21px;height:21px;"></image></div>
 			<div id="measureArea" onclick="measureClick(this,'Area');"><image src="/images/egovframework/gis/area.png" style="width:20px;height:20px;"></image></div>
 			<div id="measureInit" onclick="measureClick(this,'Init');"><image src="/images/egovframework/gis/init.png" style="width:22px;height:22px;"></image></div>
 		</div>
-		
+		<div id="rotateMap"><img src="/images/egovframework/gis/compass.png" style="width:85px;height:85px;"></img></div>
+		<div id="map" style="z-index:0;"></div>
 <script src="js/gisMain.js"></script>
 </body>
 </html>

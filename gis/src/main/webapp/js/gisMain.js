@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	map.addLayer(vector);
 	map.addLayer(measureVector);
+	mapRotate();
 });
 
 document.getElementById("searchHideBtn").addEventListener("click", (e) => {
@@ -297,3 +298,26 @@ function measureInit() {
 	}
 	map.getOverlays().clear();
 }
+
+function mapRotate(){
+  
+  $('#rotateMap').draggable({
+    handle: 'img',
+    opacity: 0.001,
+    helper: 'clone',
+    drag: function(event) {
+      var pw = document.getElementById('rotateMap'),
+        pwBox = pw.getBoundingClientRect(),
+        center_x = (pwBox.left + pwBox.right) / 2,
+        center_y = (pwBox.top + pwBox.bottom) / 2,
+        mouse_x = event.pageX,
+        mouse_y = event.pageY,
+        radians = Math.atan2(mouse_x - center_x, mouse_y - center_y),
+        degree = Math.round(-radians * (180 / Math.PI)) + 180;
+      radians = degree*Math.PI/180;
+      map.getView().setRotation(radians);
+      var e = document.getElementById('rotateMap');
+      if(e){e.style.transform = "rotate(" + degree + "deg)"};
+    }
+  });
+ }
